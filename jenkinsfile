@@ -28,6 +28,11 @@ stage ('Deploy') {
              sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
           }
         }
-        
+   stage ('Publish') {
+   
+        steps {
+            sh 'curl -x PUT -u admin:AP68asDSgBSmSfbJHrtgYq3gLjp -T target/my-app-1.0-SNAPSHOT.jar "http://40.117.113.204:8081/artifactory/example-repo-local/my-app-1.0-SNAPSHOT.jar"'
+        }
+        }
    }
   }
